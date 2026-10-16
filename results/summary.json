@@ -1,0 +1,90 @@
+{
+  "snapshots": 8,
+  "transitions": 7,
+  "episodes": 233,
+  "changed_rows": 2830,
+  "changed_cells": 3140,
+  "variables": 20,
+  "families": 6,
+  "queries": 15700,
+  "development": {
+    "queries": 745,
+    "nonzero": 740,
+    "tightened": 300,
+    "tightened_pct": 40.54054054054054,
+    "mean_reduction": 13.639074351207789,
+    "max_ratio": 23.000000000001137,
+    "p90_ratio": 1.7941176470588422,
+    "collapsed": 2,
+    "coupled_undecided": 85.01960263140408,
+    "independent_undecided": 98.34540501029973
+  },
+  "temporal_holdout": {
+    "queries": 14955,
+    "nonzero": 14104,
+    "tightened": 5620,
+    "tightened_pct": 39.84685195689166,
+    "mean_reduction": 7.913773590720112,
+    "max_ratio": 284.9999999997784,
+    "p90_ratio": 1.385730994152066,
+    "collapsed": 10,
+    "coupled_undecided": 85.94939935317505,
+    "independent_undecided": 93.37583708220374
+  },
+  "temporal_holdout_calendar": {
+    "queries": 159708,
+    "nonzero": 88144,
+    "tightened": 7611,
+    "tightened_pct": 8.63473407151933,
+    "mean_reduction": 1.441118065384556,
+    "max_ratio": 284.9999999997784,
+    "p90_ratio": 1.0000000001515825,
+    "collapsed": 13,
+    "coupled_undecided": 53.76407240243146,
+    "independent_undecided": 54.64428026693273
+  },
+  "collapsed_queries": 12,
+  "leave_one_station": {
+    "stations": 36,
+    "minimum_tightened_pct": 36.37346513244266,
+    "minimum_mean_reduction": 6.930584767055133
+  },
+  "leave_one_family": {
+    "dominant_family": "SOIL",
+    "dominant_omission_mean_reduction": 0.7810280754899579,
+    "other_minimum_mean_reduction": 7.919388585462873
+  },
+  "holdout_transitions_without_tightening": 1,
+  "gaining_episodes": 19,
+  "scaling": {
+    "dynamic_program_max_nodes": 10000,
+    "dynamic_program_median_ms": 25.48341699912271,
+    "generic_solver_max_nodes": 1000,
+    "generic_solver_median_ms": 145.8591249993333,
+    "generic_solver_slowdown": 59.72531150861854
+  },
+  "verification_failures": 0,
+  "earthquake_validation": {
+    "ComcatEvents": 192,
+    "ComcatLineages": 195,
+    "ComcatTransitions": 409,
+    "ComcatReviewedTransitions": 406,
+    "ComcatMagnitudeChanges": 59,
+    "ComcatDepthChanges": 75,
+    "ComcatFirstReviewChanges": 52,
+    "ComcatThresholds": 4992,
+    "ComcatFlips": 66,
+    "ComcatFlippingEvents": 51,
+    "ComcatLeaveOneMinFlips": 62,
+    "ComcatLeaveOneFailures": 0,
+    "ComcatIntervalEvents": 42,
+    "ComcatIntervalUnionWidth": "1.20",
+    "ComcatIntervalUnionPct": "48.0",
+    "ComcatLeaveOneIntervalMin": "1.10",
+    "ComcatLeaveOneIntervalMinPct": "44.0",
+    "ComcatIntervalFailures": 0,
+    "ComcatWitnesses": 52,
+    "ComcatWitnessFailures": 0,
+    "ComcatAbstentions": 4992
+  }
+}

@@ -1,4 +1,4 @@
-from threshold_queries import (
+from threshold_queries.workflow import (
     check_endpoint_witness,
     dp_bounds,
     dp_bounds_with_witness,
