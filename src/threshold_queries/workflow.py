@@ -19,7 +19,8 @@ import pandas as pd
 from scipy.optimize import linprog
 from scipy.sparse import coo_matrix
 
-from .inputs import PROJECT_ROOT, validate_inputs
+from .inputs import PROJECT_ROOT, snapshot_paths, validate_inputs
+from .verification import require_zero_failures
 
 
 ROOT = PROJECT_ROOT
@@ -61,6 +62,10 @@ FIELDS = [
 VALUE_START = 5
 DEVELOPMENT_SNAPSHOT_COUNT = 4
 HELDOUT_START_TRANSITION = DEVELOPMENT_SNAPSHOT_COUNT
+QUIET_RELEASE_PAIR = (
+    "CRND0103-202010260450.zip",
+    "CRND0103-202011020550.zip",
+)
 
 
 def read_snapshot_frame(z: ZipFile, name: str) -> pd.DataFrame:
@@ -159,6 +164,25 @@ def changed_episodes(paths: list[Path]):
                 }
             )
     return episodes, pd.DataFrame(transitions)
+
+
+def quiet_transition_failures(paths, transitions, episodes) -> int:
+    """Test the declared unchanged release pair, including missing controls."""
+
+    matches = [
+        index
+        for index, (left, right) in enumerate(zip(paths, paths[1:]), start=1)
+        if (left.name, right.name) == QUIET_RELEASE_PAIR
+    ]
+    if len(matches) != 1:
+        return 1
+    transition = matches[0]
+    rows = transitions.loc[transitions.transition == transition]
+    if len(rows) != 1:
+        return 1
+    counts_are_zero = rows.iloc[0][["files", "rows", "cells"]].eq(0).all()
+    has_episode = any(episode["transition"] == transition for episode in episodes)
+    return int(not counts_are_zero or has_episode)
 
 
 def workload(episodes, endpoint_mode: str = "changed") -> pd.DataFrame:
@@ -1739,7 +1763,7 @@ def main() -> None:
     PLOTS.mkdir(parents=True, exist_ok=True)
     operator_diagram()
     comcat = comcat_validation()
-    paths = sorted(RAW.glob("CRND0103-2020*.zip"))
+    paths = snapshot_paths()
     episodes, transitions = changed_episodes(paths)
     queries = workload(episodes)
     calendar_queries = workload(episodes, endpoint_mode="calendar")
@@ -2352,7 +2376,7 @@ def main() -> None:
         {
             "audit": "quiet-transition false revision files",
             "cases": 1,
-            "failures": int(transitions.loc[transitions.files == 0, "files"].sum()),
+            "failures": quiet_transition_failures(paths, transitions, episodes),
         },
         {
             "audit": "native nested partition containment",
@@ -2402,6 +2426,7 @@ def main() -> None:
     }
     (OUT / "summary.json").write_text(json.dumps(summary, indent=2) + "\n")
     print(json.dumps(summary, indent=2))
+    require_zero_failures(audit_rows)
 
 
 if __name__ == "__main__":

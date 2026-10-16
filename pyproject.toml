@@ -22,6 +22,7 @@ dev = ["black==24.10.0", "flake8==7.1.1", "pytest==8.4.2"]
 [project.scripts]
 threshold-queries = "threshold_queries.workflow:main"
 threshold-queries-check = "threshold_queries.inputs:main"
+threshold-queries-verify = "threshold_queries.verification:main"
 
 [tool.setuptools.packages.find]
 where = ["src"]

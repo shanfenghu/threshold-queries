@@ -61,6 +61,16 @@ EXPECTED_INPUTS = (
 )
 
 
+def snapshot_paths(root: Path = DATA_ROOT) -> list[Path]:
+    """Return only the eight declared climate archives, in publication order."""
+
+    return [
+        root / spec.path
+        for spec in EXPECTED_INPUTS
+        if spec.path.startswith("raw/uscrn/")
+    ]
+
+
 def file_digest(path: Path) -> str:
     """Return the SHA-256 digest of a file without loading it all at once."""
 

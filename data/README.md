@@ -17,6 +17,10 @@ python data/fetch_uscrn.py
 The script writes only to `data/raw/uscrn/`, leaves existing files unchanged,
 and removes incomplete downloads. The digest check detects missing, altered, or
 newly replaced archives before evaluation.
+The evaluation selects the eight declared names in publication order rather
+than scanning the directory for additional archives. The 26 October to
+2 November release pair is the fixed no-revision control; nonzero file, row,
+cell, or episode counts for that pair make evaluation fail.
 
 ## Earthquake histories
 
