@@ -1,0 +1,2 @@
+queries,identity_checks,strictness_checks,decision_set_containment_checks,lower_flank_checks,upper_flank_checks,mixed_endpoint_checks,raw_row_endpoint_checks,minimax_penalty_checks,containment_failures,mixed_endpoint_failures,raw_row_endpoint_failures,minimax_penalty_failures,failures,max_identity_error
+182319,182319,182319,182319,182319,182319,182319,364638,182319,0,0,0,0,0,7.275957614183426e-12

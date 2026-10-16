@@ -1,0 +1,20 @@
+audit,cases,failures
+native replay endpoints,15700,0
+complete daily endpoint census,166619,0
+exhaustive endpoint bounds,2000,0
+exhaustive threshold classes,14000,0
+endpoint witness replay,4000,0
+stale witness rejection,2000,0
+six-class certificate mutation rejection,12000,0
+refinement interval inclusion,2000,0
+two-step refinement across two queries,5120,0
+shared affine-parameter endpoints,3072,0
+finite-mode projection endpoints and equality,16384,0
+tree-local polytope LP endpoints,512,0
+odd-cycle local-polytope feasibility gap,5120,0
+ComCat leave-one-event reversal persistence,192,0
+ComCat continuous reversal-interval identity,4992,0
+two-mode decision inflation identity,1640871,0
+crossing-scope acceptance,500,0
+quiet-transition false revision files,1,0
+native nested partition containment,47100,0

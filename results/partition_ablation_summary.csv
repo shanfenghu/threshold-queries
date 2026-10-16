@@ -1,0 +1,5 @@
+partition,nonzero_queries,tightened_queries,tightened_pct,mean_reduction_pct
+release episode,740,300,40.54054054054054,13.639074351207789
+calendar month,740,299,40.4054054054054,10.027285515170599
+within-month contiguous run,740,263,35.54054054054054,3.4590425043357307
+independent row,740,0,0.0,0.0
